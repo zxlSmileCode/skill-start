@@ -38,7 +38,7 @@
           </li>
           <li class="fr addopp">
             <input type="button" style="width:24px" @click="i.buynum--" value="-" :disabled="i.buynum==1"/>
-            <input type="text" v-model="i.buynum" style="width:30px;">
+            <input type="text" v-model="i.buynum" style="width:30px;textAlign:center">
             <input type="button" style="width:24px" @click="i.buynum++" value="+" :disabled="i.buynum==i.num">
           </li>
         </ul>
@@ -113,12 +113,14 @@ export default {
       goods:[{
         name:'白衬衫男长袖韩版修身商务正装职业工装短袖结婚伴郎西装白色衬衣',
         size:'1-317（长袖）平纹款白色;40/XL',
+        pigimg:'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2865991597,944747464&fm=173&app=49&f=JPEG?w=640&h=360&s=B4A602BA56C750E2D2B7E2C70300F0B6',
         much:39,
         num:5,
         buynum:1
       },{
         name:'cyxcyxxyxycxycyxzxlcyxcyxxyxycxycyxzxl',
         size:'250-250(IQ) like a pig',
+        pigimg:'http://img4.imgtn.bdimg.com/it/u=3889104832,2229867208&fm=26&gp=0.jpg',
         much:9999,
         num:3,
         buynum:1
@@ -225,7 +227,7 @@ export default {
 .imgs {
   width: 90px;
   height: 90px;
-  background: deeppink;
+  background: url('https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2865991597,944747464&fm=173&app=49&f=JPEG?w=640&h=360&s=B4A602BA56C750E2D2B7E2C70300F0B6') no-repeat;
   margin-left: 20px;
   margin-right: 10px;
   float: left;

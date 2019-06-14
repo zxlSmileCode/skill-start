@@ -1,12 +1,14 @@
 <template>
   <div class="tb-toolbar-container" data-spm="toolbar">
     <router-link v-for="(i,index) in inf" :key="index" :to="src[index]" class="tab">
-      <span :class="{
+      <span
+        :class="{
         'tb-toolbar-iconfont':true,
         'iconfont':true,
         [styles[index]]:true,
         'active':act[index]
-        }"></span>
+        }"
+      ></span>
       <p class="text">{{i}}</p>
     </router-link>
   </div>
@@ -25,22 +27,23 @@ export default {
         "icon-more"
       ],
       src: ["/", "/shopcar", "/list", "myself", "/more"],
-      act:[true,false,false,false,false]
+      act: [true, false, false, false, false]
     };
   },
-  created(){
-    for(var i = 0 ;i<this.src.length;i++){
+  created() {
+    for (var i = 0; i < this.src.length; i++) {
       this.act[i] = false;
     }
     this.act[this.src.indexOf(this.$route.path)] = true;
   }
 };
+
 </script>
 
 <style lang="scss" scoped>
 @import "./iconfont/iconfont.css";
 .active {
-  color: black!important;
+  color: black !important;
   font-weight: bolder;
 }
 

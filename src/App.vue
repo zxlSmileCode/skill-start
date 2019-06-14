@@ -20,16 +20,6 @@ export default {
     outline: 0;
     -webkit-tap-highlight-color: transparent;
 }
-body, html {
-    height: 100%;
-    background-color: #f4f4f4;
-}
-html{
-  font-size: 37.5px;
-}
-body{
-  font-size: 16px;
-}
 #app {
     padding-bottom: 43px;
     height: 100%;

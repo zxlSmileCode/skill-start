@@ -32,6 +32,9 @@ export default new Router({
     {
       path: '/list',
       name: 'list',
+      meta: {
+        requireAuth: true,
+      },
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -40,6 +43,9 @@ export default new Router({
     {
       path: '/shopcar',
       name: 'shopcar',
+      meta: {
+        requireAuth: true,
+      },
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -48,6 +54,9 @@ export default new Router({
     {
       path: '/myself',
       name: 'myself',
+      meta: {
+        requireAuth: true,
+      },
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -56,6 +65,9 @@ export default new Router({
     {
       path: '/more',
       name: 'more',
+      meta: {
+        requireAuth: true,
+      },
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -69,5 +81,15 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import('./views/Search.vue'),
     },
+    {
+      path: '/about',
+      name: 'about',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('./views/About.vue'),
+    },
   ],
 });
+
+

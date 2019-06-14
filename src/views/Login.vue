@@ -63,7 +63,7 @@
                   class="am-input-required"
                   name="TPL_username"
                   placeholder="手机号/邮箱/会员名"
-                  value
+                  v-model="user"
                   id="username"
                   autocomplete="off"
                 >
@@ -79,7 +79,7 @@
                   class="am-input-required am-input-required-password"
                   name="TPL_password"
                   placeholder="请输入密码"
-                  value
+                  v-model="pw"
                   id="password"
                   autocomplete="off"
                 >
@@ -98,11 +98,11 @@
           <div class="other-link">
             <div class="am-field am-footer">
               <a href="#" class="f-left">短信验证码登录</a>
-              <a href="#" class="f-right">免费注册</a>
+              <router-link to="/reg" class="f-right">免费注册</router-link>
             </div>
           </div>
           <div class="am-field am-fieldBottom">
-            <button type="submit" class="am-button am-button-submit" id="btn-submit">登 录</button>
+            <button @click="denglu" class="am-button am-button-submit" id="btn-submit" type="button">登 录</button>
           </div>
 
           <input
@@ -119,15 +119,37 @@
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
+import Cookies from 'js-cookie'
+
 export default {
   data() {
     return {
-      bools: true
+      bools: true,
+      user:"",
+      pw:""
     };
   },
   methods: {
     changes() {
       this.bools = false;
+    },
+    denglu() {
+      this.$http.get(
+        "https://www.apiopen.top/login?key=00d91e8e0cca2b76f515926a36db68f5&phone="+this.user+"&passwd="+this.pw
+      ).then(result=>{
+        // console.log(result.body.msg);
+        if(result.body.msg == "用户不存在！"){
+          Toast(result.body.msg);
+        }else if(result.body.msg == "成功!"){
+          Cookies.set('name', this.user, { expires: 1 });
+          Toast("登录成功");
+          location.href="/";
+        }else{
+          Toast("用户名或密码错误！");
+          // console.log(this.user,this.pw)
+        }
+      })
     }
   }
 };

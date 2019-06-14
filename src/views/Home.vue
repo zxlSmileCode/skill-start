@@ -67,7 +67,7 @@ export default class Home extends Vue {
           if (!this.scrolls) {
             setTimeout(() => {
               this.bool = true;
-            }, 800);
+            }, 1000);
           }
         }
       }
@@ -95,7 +95,16 @@ export default class Home extends Vue {
 
 <style lang="scss">
 @import "../components/iconfont/iconfont.css";
-
+body, html {
+    height: 100%;
+    background-color: #f4f4f4;
+}
+html{
+  font-size: 37.5px;
+}
+body{
+  font-size: 16px;
+}
 .gQmoYV {
   min-height: 100%;
   background-color: #f4f4f4;
