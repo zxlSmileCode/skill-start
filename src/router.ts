@@ -90,6 +90,9 @@ export default new Router({
       component: () => import('./views/About.vue'),
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    return {x: 0, y: 0};
+  },
 });
 
 

@@ -30,7 +30,8 @@
                         name="q"
                         class="J_autocomplete"
                         autocomplete="off"
-                        value
+                        v-model="name"
+                        @keydown="showList(name)"
                         data-spm-anchor-id="0.0.0.i1.afb048cc9NVNKP"
                       >
                       <button style="display: none;">
@@ -81,7 +82,13 @@
       </div>
     </div>
     <div id="J_SiftContainer" class="m-sift"></div>
-    <div id="J_PageNavContainer" style="display: none;"></div>
+    <div id="J_PageNavContainer">
+      <ul>
+        <li v-for="(i,index) in allSearch" :key="index">
+          <a href="#" @click="goAbout(i)">{{i}}</a>
+        </li>
+      </ul>
+    </div>
     <div
       id="m6b88ad"
       dpr="1"
@@ -113,12 +120,16 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
     data(){
-        return{
-            shows:true,
-            chose:false
-        }
+      return{
+          shows:true,
+          chose:false,
+          name:'',
+          allSearch:[],
+          open:true
+      }
     },
     methods:{
         close(){
@@ -126,9 +137,36 @@ export default {
         },
         chos(){
             this.chose = !this.chose;
+        },
+        showList(what){
+          let _this = this;
+          if(this.open){
+            this.open = false;
+            setTimeout(()=>{
+              _this.allSearch = [];
+              axios
+                .get("https://www.easy-mock.com/mock/5d034e75707b753c83a5a2da/example/suning")
+                .then(function(response) {
+                    let msg = response.data.data;
+                    for(const item of msg){
+                      if(item.name.indexOf(what) != -1){
+                        _this.allSearch.push(item.name);
+                      }
+                    }
+                });
+              this.open = true;
+            },800);
+          }
+        },
+        goAbout(data){
+          this.$router.push({
+            path:'about',
+            query:{name:data}
+          })
         }
     }
-};
+  }
+
 </script>
 
 <style lang="scss" scoped>

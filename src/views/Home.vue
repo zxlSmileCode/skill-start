@@ -4,7 +4,7 @@
     <div class="sc-htpNat gQmoYV">
       <TaoBanner/>
       <TaoMain/>
-      <TaoGuess v-show="bool"/>
+      <TaoGuess/>
       <TaoFooter/>
       <div
         v-show="goTop"
@@ -50,7 +50,6 @@ export default class Home extends Vue {
     return {
       bool: false,
       goTop: false,
-      scrolls: true,
     };
   }
   public mounted() {
@@ -60,23 +59,14 @@ export default class Home extends Vue {
       } else {
         this.goTop = false;
       }
-      // 只加载一次 后面数据再改！
-      if (window.scrollY >= 1750) {
-        if (this.scrolls) {
-          this.scrolls = false;
-          if (!this.scrolls) {
-            setTimeout(() => {
-              this.bool = true;
-            }, 1000);
-          }
-        }
-      }
     });
   }
   public methods() {
     this.goback();
   }
-
+  public destroyed() {
+      window.addEventListener('scroll', null);
+  }
   private goback() {
     let Y = window.scrollY;
     const timer = setInterval(() => {
@@ -93,7 +83,7 @@ export default class Home extends Vue {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../components/iconfont/iconfont.css";
 body, html {
     height: 100%;

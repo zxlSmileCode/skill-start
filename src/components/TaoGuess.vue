@@ -6,13 +6,13 @@
         <span class="iconfont icon-search"></span>猜你喜欢
       </div>
     </div>
-    <div class="waterfall" style="height:6750px;">
+    <div ref="list" class="waterfall">
       <div
         v-for="(i,index) in goodList"
         :key="index"
         class="tpl-wrapper"
         style="width:185px;display:inline-block;margin-right:2px;"
-        @click="goAbout(i.inf)"
+        @click="goAbout(i.name)"
       >
       <!-- style="position: absolute; left: 0px; top: 0px;" -->
         <div
@@ -28,7 +28,8 @@
               style="display: flex; overflow: hidden; width: 100%; height: 184.5px; position: absolute;"
             >
               <div
-                style="width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: cover; background-image: url(&quot;//img.alicdn.com/bao/uploaded/i3/T1__0gFIBaXXXXXXXX_!!0-item_pic.jpg_300x300q85s150.jpg_.webp&quot;);"
+                class="imgSrc"
+                :style="`backgroundImage:url(${i.imgsrc})`"
               ></div>
             </div>
             <div
@@ -73,7 +74,7 @@
                   src="//gw.alicdn.com/tfs/TB1HVMEmWmWBuNjy1XaXXXCbXXa-69-45.png"
                   style="height: 13px; vertical-align: top; padding-right: 4px; position: relative; top: 2px;"
                 >
-                {{i.inf}}
+                {{i.name}}
               </span>
             </span>
           </div>
@@ -90,14 +91,14 @@
                 style="display: inline-block; overflow: hidden; font-size: 16px; height: 24px; width: 164.5px; margin-left: 10px; margin-top: 5.5px; color: rgb(255, 80, 0); text-align: left; text-overflow: ellipsis; white-space: nowrap; line-height: 24px;"
               >
                 <span>
-                  <span style="display: inline-block; font-size: 10px;">¥</span>{{(i.pirce).slice(1)}}
+                  <span style="display: inline-block; font-size: 10px;">¥</span>{{i.price}}
                 </span>
               </div>
             </div>
             <div
               view-name="DTextView"
               style="display: inline-block; overflow: hidden; font-size: 11px; height: 23px; width: 164.5px; margin-left: 10px; margin-top: 6.5px; text-align: right; color: rgb(153, 153, 153); text-overflow: ellipsis; white-space: nowrap; line-height: 23px; position: absolute;"
-            >{{i.people}}</div>
+            >66</div>
           </div>
         </div>
       </div>
@@ -110,20 +111,21 @@ import axios from "axios";
 export default {
   data() {
     return {
-      goodList: []
+      goodList: [],
+      bool:true
     };
   },
   methods: {
     getList() {
       axios
         .get(
-          "https://www.easy-mock.com/mock/5d0065dd6e482d66b727b983/example/taobaoList"
+          "https://www.easy-mock.com/mock/5d034e75707b753c83a5a2da/example/suning"
         )
         .then(result => {
           this.goodList = [...this.goodList, ...result.data.data];
-          // console.log(result.data.data);
           console.log(this.goodList);
         });
+      this.bool = true;
     },
     goAbout(data){
       this.$router.push({
@@ -132,8 +134,20 @@ export default {
       })
     }
   },
-  created() {
-    this.getList();
+  mounted(){
+    window.addEventListener("scroll", () => {
+      if (this.bool) {
+        if (window.scrollY >= this.$refs.list.offsetHeight + 1600) {
+          this.bool = false;
+          console.log('到底部了',this.$refs.list.offsetHeight);
+          this.timer = setTimeout(this.getList, 1000);
+        }
+      }
+    });
+  },
+  destroyed(){
+    window.addEventListener("scroll",null);
+    this.timer = null;
   }
 };
 </script>
@@ -208,6 +222,13 @@ export default {
 }
 .tpl-wrapper {
   overflow: hidden;
+}
+.imgSrc{
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 </style>
 

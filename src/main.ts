@@ -20,8 +20,6 @@ new Vue({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requireAuth) {
-    // console.log(_this);
-    // console.log(Cookies.get('name'));
     if (Cookies.get('name')) {
       next();
     } else {
@@ -34,3 +32,4 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+

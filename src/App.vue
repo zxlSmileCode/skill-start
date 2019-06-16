@@ -7,6 +7,22 @@
 
 <script>
 export default {
+    watch:{
+        $route:{
+            handler(val,oldVal){
+                if(val.path == '/more'){
+                    this.$el.parentNode.parentNode.style.fontSize = 24+'px';
+                    this.$el.parentNode.style.fontSize = 28+'px';
+                }else{
+                    this.$el.parentNode.parentNode.style.fontSize = 37.5+'px';
+                    this.$el.parentNode.style.fontSize = 16+'px';
+                    if(val.path == '/about'){
+                        this.$el.parentNode.parentNode.style.fontSize = 100+'px';
+                    }
+                }
+            }
+        }
+    }
 }
 
 </script>

@@ -120,7 +120,7 @@
 
 <script>
 import { Toast } from 'mint-ui';
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 
 export default {
   data() {
@@ -154,9 +154,6 @@ export default {
   }
 };
 </script>
-
-
-
 
 
 <style scoped>

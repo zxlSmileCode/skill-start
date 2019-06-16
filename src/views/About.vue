@@ -1,10 +1,10 @@
 <template>
   <div id="about">
     <div class="navi-bar">
-      <button class="btn-back">
+      <button class="btn-back" @click="goback">
         <span class="taobao-iconfont">ꁽ</span>
       </button>
-      <button class="btn-cart">
+      <button class="btn-cart" @click="goback">
         <span class="taobao-iconfont">ꁍ</span>
       </button>
     </div>
@@ -22,7 +22,7 @@
             <div class="main-price-wrapper">
               <!-- empty -->
               <p class="o-t-price">
-                <span class="num">{{thismes.pirce}}</span>
+                <span class="num">{{thismes.price}}</span>
               </p>
               <p class="txt">
                 <span>卖家促销</span>
@@ -81,11 +81,11 @@
       <div data-spm="dinamic$TB_detail_shop_10034" data-tpl-id="dinamic$TB_detail_shop_10034" class="tpl-wrapper"><div view-name="FrameLayout" style="position: relative; display: flex; overflow: hidden; width: 375px; background-color: rgb(255, 255, 255); height: 110px;"><div view-name="ImageView" style="position: absolute; display: flex; overflow: hidden; margin-top: 12px; height: 49px; margin-left: 12px; width: 49px; border-radius: 3px;"><div style="width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: cover; background-image: url(&quot;//img.alicdn.com/https://img.alicdn.com/imgextra/i1/65784980/TB2NsimbY3nBKNjSZFMXXaUSFXa_!!65784980.jpg_200x200_.webp&quot;);"><img src="//img.alicdn.com/https://img.alicdn.com/imgextra/i1/65784980/TB2NsimbY3nBKNjSZFMXXaUSFXa_!!65784980.jpg_200x200_.webp" style="max-height: 100%; max-width: 100%; opacity: 0;"></div></div><div view-name="FrameLayout" style="position: absolute; display: flex; overflow: hidden; margin-top: 12px; height: 49px; margin-left: 69px; width: 145px; left: 0px; top: 0px;"><div view-name="TextView" aria-label="十八纸品牌自营店" style="position: absolute; display: flex; margin-left: 0px; width: 144px; margin-top: 9px; height: auto; font-size: 14px; overflow: hidden; color: rgb(51, 51, 51); visibility: visible; left: 0px; top: 0px; -webkit-box-pack: start; justify-content: flex-start; -webkit-box-align: center; align-items: center; max-width: none;"><span style="white-space: nowrap; line-height: 17px; overflow: hidden; text-overflow: ellipsis;">十八纸品牌自营店</span></div><div view-name="TextView" aria-label="十八纸品牌自营店" style="position: absolute; display: none; margin-left: 0px; width: 100%; max-width: none; margin-top: 15px; height: auto; font-size: 14px; overflow: hidden; color: rgb(51, 51, 51); left: 0px; top: 0px; -webkit-box-pack: start; justify-content: flex-start; -webkit-box-align: center; align-items: center;"><span style="white-space: nowrap; line-height: 17px; overflow: hidden; text-overflow: ellipsis;">十八纸品牌自营店</span></div><div view-name="LinearLayout" style="position: absolute; display: flex; overflow: hidden; margin-top: 27px; height: 14px; margin-left: 0px; width: -webkit-fit-content; -webkit-box-orient: horizontal; flex-direction: row;"><div view-name="ImageView" style="position: relative; display: flex; flex-shrink: 0; flex-grow: 0; overflow: hidden; margin-top: 0px; height: 12px; margin-left: 0px; width: 14px; place-self: flex-start;"><div style="width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: cover; background-image: url(&quot;//gw.alicdn.com/tfs/TB1zgzmlZLJ8KJjy0FnXXcFDpXa-171-148.png_50x50_.webp&quot;);"><img src="//gw.alicdn.com/tfs/TB1zgzmlZLJ8KJjy0FnXXcFDpXa-171-148.png_50x50_.webp" style="max-height: 100%; max-width: 100%; opacity: 0;"></div></div><div view-name="ImageView" style="position: relative; display: flex; flex-shrink: 0; flex-grow: 0; overflow: hidden; margin-top: 0px; height: 12px; margin-left: 1px; width: 66px; place-self: flex-start;"><div style="width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: cover; background-image: url(&quot;//gw.alicdn.com/tfs/TB1zuz8ir_I8KJjy1XaXXbsxpXa-132-24.png_200x200_.webp&quot;);"><img src="//gw.alicdn.com/tfs/TB1zuz8ir_I8KJjy1XaXXbsxpXa-132-24.png_200x200_.webp" style="max-height: 100%; max-width: 100%; opacity: 0;"></div></div></div><div view-name="ImageView" style="position: absolute; display: none; overflow: hidden; margin-top: 27px; height: 12px; margin-left: 48px; width: 12px; left: 0px; top: 0px;"><div style="width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: 100% 100%;"></div></div></div><div view-name="TextView" aria-label="全部宝贝" style="position: absolute; display: flex; margin-right: 89px; width: 65px; margin-top: 24px; height: 24px; font-size: 12px; overflow: hidden; color: rgb(255, 80, 0); border-radius: 12px; border: 0.5px solid rgb(255, 80, 0); -webkit-box-pack: center; justify-content: center; -webkit-box-align: center; align-items: center; right: 0px; top: 0px; max-width: none;"><span style="white-space: nowrap; line-height: 14px; overflow: hidden; text-overflow: ellipsis;">全部宝贝</span></div><div view-name="ImageView" style="position: absolute; display: flex; overflow: hidden; margin-top: 24px; height: 24px; margin-right: 12px; width: 65px; right: 0px; top: 0px;"><div style="width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: cover; background-image: url(&quot;https://gw.alicdn.com/tfs/TB1RldEnY9YBuNjy0FgXXcxcXXa-195-72.png?getAvata_200x200_.webp&quot;);"><img src="https://gw.alicdn.com/tfs/TB1RldEnY9YBuNjy0FgXXcxcXXa-195-72.png?getAvata_200x200_.webp" style="max-height: 100%; max-width: 100%; opacity: 0;"></div></div><div view-name="View" style="position: absolute; display: flex; width: 100%; margin-top: 61px; height: 20px; left: 0px; top: 0px;"></div><div view-name="FrameLayout" style="position: absolute; display: flex; overflow: hidden; margin-top: 61px; height: 49px; margin-left: 12px; width: 351px; visibility: visible; left: 0px; bottom: 0px;"><div view-name="TextView" aria-label="宝贝描述" style="position: absolute; display: flex; margin-left: 0px; width: 54px; height: auto; font-size: 12px; overflow: hidden; color: rgb(153, 153, 153); left: 0px; top: 17.7px; -webkit-box-pack: start; justify-content: flex-start; -webkit-box-align: center; align-items: center; max-width: none;"><span style="white-space: nowrap; line-height: 14px; overflow: hidden; text-overflow: ellipsis;">宝贝描述</span></div><div view-name="TextView" aria-label="4.9 " style="position: absolute; display: flex; margin-left: 49px; width: 33px; height: auto; font-size: 12px; overflow: hidden; color: rgb(255, 80, 0); -webkit-box-pack: center; justify-content: center; -webkit-box-align: center; align-items: center; left: 0px; top: 17.7px; max-width: none;"><span style="white-space: nowrap; line-height: 14px; overflow: hidden; text-overflow: ellipsis;">4.9 </span></div><div view-name="TextView" aria-label="高" style="position: absolute; display: flex; margin-left: 81px; width: 14px; height: 14px; border-radius: 7px; font-size: 10px; overflow: hidden; -webkit-box-pack: center; justify-content: center; -webkit-box-align: center; align-items: center; color: rgb(255, 80, 0); background-color: rgb(255, 241, 235); left: 0px; top: 17.5px; max-width: none;"><span style="white-space: nowrap; line-height: 12px; overflow: hidden; text-overflow: ellipsis;">高</span></div><div view-name="TextView" aria-label="卖家服务" style="position: absolute; display: flex; margin-left: 128px; width: 54px; height: auto; font-size: 12px; overflow: hidden; color: rgb(153, 153, 153); left: 0px; top: 17.7px; -webkit-box-pack: start; justify-content: flex-start; -webkit-box-align: center; align-items: center; max-width: none;"><span style="white-space: nowrap; line-height: 14px; overflow: hidden; text-overflow: ellipsis;">卖家服务</span></div><div view-name="TextView" aria-label="4.9 " style="position: absolute; display: flex; margin-left: 177px; width: 33px; height: auto; font-size: 12px; overflow: hidden; color: rgb(255, 80, 0); -webkit-box-pack: center; justify-content: center; -webkit-box-align: center; align-items: center; left: 0px; top: 17.7px; max-width: none;"><span style="white-space: nowrap; line-height: 14px; overflow: hidden; text-overflow: ellipsis;">4.9 </span></div><div view-name="TextView" aria-label="高" style="position: absolute; display: flex; margin-left: 210px; width: 14px; height: 14px; border-radius: 7px; font-size: 10px; overflow: hidden; -webkit-box-pack: center; justify-content: center; -webkit-box-align: center; align-items: center; color: rgb(255, 80, 0); background-color: rgb(255, 241, 235); left: 0px; top: 17.5px; max-width: none;"><span style="white-space: nowrap; line-height: 12px; overflow: hidden; text-overflow: ellipsis;">高</span></div><div view-name="TextView" aria-label="物流服务" style="position: absolute; display: flex; margin-left: 254px; width: 54px; height: auto; font-size: 12px; overflow: hidden; color: rgb(153, 153, 153); left: 0px; top: 17.7px; -webkit-box-pack: start; justify-content: flex-start; -webkit-box-align: center; align-items: center; max-width: none;"><span style="white-space: nowrap; line-height: 14px; overflow: hidden; text-overflow: ellipsis;">物流服务</span></div><div view-name="TextView" aria-label="4.9 " style="position: absolute; display: flex; margin-left: 303px; width: 33px; height: auto; font-size: 12px; overflow: hidden; color: rgb(255, 80, 0); -webkit-box-pack: center; justify-content: center; -webkit-box-align: center; align-items: center; left: 0px; top: 17.7px; max-width: none;"><span style="white-space: nowrap; line-height: 14px; overflow: hidden; text-overflow: ellipsis;">4.9 </span></div><div view-name="TextView" aria-label="高" style="position: absolute; display: flex; margin-left: 336px; width: 14px; height: 14px; border-radius: 7px; font-size: 10px; overflow: hidden; -webkit-box-pack: center; justify-content: center; -webkit-box-align: center; align-items: center; color: rgb(255, 80, 0); background-color: rgb(255, 241, 235); left: 0px; top: 17.5px; max-width: none;"><span style="white-space: nowrap; line-height: 12px; overflow: hidden; text-overflow: ellipsis;">高</span></div></div></div></div>
     </div>
     <div class="bottom-bar" data-spm="bottom-bar"><div class="btn-shop"><span class="taobao-iconfont icon-highlight">삍</span><span class="btn-text">店铺</span></div><div class="btn-wangwang"><span class="taobao-iconfont ">쁭</span><span class="btn-text">客服</span></div><div class="btn-fav"><span class="taobao-iconfont ">뀝</span><span class="btn-text">收藏</span></div><div @click="showbox=true" class="bottom-bar-btn cart btn-pos-left "><span class="btn-title">加入购物车</span><!-- empty --></div><div @click="showbox=true" class="bottom-bar-btn buy btn-pos-right "><span class="btn-title">立即购买</span><!-- empty --></div></div>
-    <div ref="shows" :class="{'dialog-container':true,'dialog-show':showbox}"><div class="dialog-wrapper" :style="{display:dis}"></div><div class="dialog dialog-popup"><div class="dialog-title hide">sku选择</div><div class="dialog-content"><div class="dialog-xsku"><div class="tb-sku-container "><div class="sku-pro"><div><div class="sku-img"><p><img src="//img.alicdn.com/imgextra/i4/TB1AZigGXXXXXa.XXXXXXXXXXXX_!!0-item_pic.jpg_120x120q50s150.jpg"></p></div><div class="sku-pro-info"><div><h3 class="sku-title">{{thismes}}</h3><p class="h">¥ 80-220</p><p class="quantity">库存:{{kucun}}</p><p class="sku-txt"><span class="c-sku"></span><span class="unc-sku">请选择: 颜色分类</span></p></div></div><div @click="showbox=false" class="sku-closed tb-sku-iconfont tb-sku-icon-close-circle" data-spm-anchor-id="a2141.7c.dialog.i0"></div></div></div><div class="sku-info"><div><h2>颜色分类</h2><ul>
+    <div ref="shows" :class="{'dialog-container':true,'dialog-show':showbox}"><div class="dialog-wrapper" :style="{display:dis}"></div><div class="dialog dialog-popup"><div class="dialog-title hide">sku选择</div><div class="dialog-content"><div class="dialog-xsku"><div class="tb-sku-container "><div class="sku-pro"><div><div class="sku-img"><p><img src="//img.alicdn.com/imgextra/i4/TB1AZigGXXXXXa.XXXXXXXXXXXX_!!0-item_pic.jpg_120x120q50s150.jpg"></p></div><div class="sku-pro-info"><div><h3 class="sku-title">{{thismes.name}}</h3><p class="h">¥ 80-220</p><p class="quantity">库存:{{kucun}}</p><p class="sku-txt"><span class="c-sku"></span><span class="unc-sku">请选择: 颜色分类</span></p></div></div><div @click="showbox=false" class="sku-closed tb-sku-iconfont tb-sku-icon-close-circle" data-spm-anchor-id="a2141.7c.dialog.i0"></div></div></div><div class="sku-info"><div><h2>颜色分类</h2><ul>
       <li v-for="item in types" :key="item" @click="thisAct(item)" :class="{
         'normal':active != item,
         sel: active == item
-        }">{{item}}</li></ul></div><div class="quantity-info"><div class="sku-quantity"><h2>购买数量 <span></span></h2><p class="btn-minus tb-sku-iconfont tb-sku-icon-minus off"><a class="btn minus" min="" style="fontSize:20px;" @click="buysum--">-</a></p><p class="btn-input"><input type="tel" v-model="buysum"></p><p class="btn-plus tb-sku-iconfont tb-sku-icon-plus"><a class="btn plus" @click="buysum++" max="">+</a></p></div></div></div><div><div class="sku-btns"><div class="sku-btn addcart">加入购物车</div><div class="sku-btn gobuy">立即购买</div></div></div></div></div></div><div class="dialog-button-group hide"><button class="btn-close ">完成</button></div></div></div>
+        }">{{item}}</li></ul></div><div class="quantity-info"><div class="sku-quantity"><h2>购买数量 <span></span></h2><p class="btn-minus tb-sku-iconfont tb-sku-icon-minus off"><a class="btn minus" min="" style="fontSize:20px;" @click="buysum--">-</a></p><p class="btn-input"><input type="tel" v-model="buysum"></p><p class="btn-plus tb-sku-iconfont tb-sku-icon-plus"><a class="btn plus" @click="buysum++" max="">+</a></p></div></div></div><div><div class="sku-btns"><div class="sku-btn addcart" @click="addCart">加入购物车</div><div class="sku-btn gobuy" @click="gobuy">立即购买</div></div></div></div></div></div><div class="dialog-button-group hide"><button class="btn-close ">完成</button></div></div></div>
   </div>
 </template>
 
@@ -117,23 +117,44 @@ export default {
     };
   },
   created(){
-      let goodinf = this.$route.query.name; 
+      let goodinf = this.$route.query.name;
       let _this = this;
       axios
-      .get("https://www.easy-mock.com/mock/5d0065dd6e482d66b727b983/example/taobaoList")
+      .get("https://www.easy-mock.com/mock/5d034e75707b753c83a5a2da/example/suning")
       .then(function(response) {
           let msg = response.data.data;
           for(const item of msg){
-              if(item.inf == goodinf){
-                  _this.thismes = item;
-                  break;
-              }
+            if(item.name == goodinf){
+                _this.thismes = item;
+                break;
+            }
           }
       });
   },
   methods:{
     thisAct(item){
       this.active = item;
+    },
+    addCart(){
+      this.$store.commit("setGoods",{
+        'id':this.thismes.price,
+        'name':this.thismes.name,
+        'num':this.buysum,
+        'src':this.thismes.imgsrc
+      });
+      console.log('添加成功！');
+    },
+    gobuy(){
+      this.$store.commit("setGoods",{
+        'id':this.thismes.price,
+        'name':this.thismes.name,
+        'num':this.buysum,
+        'src':this.thismes.imgsrc
+      });
+      location.href="/shopcar";
+    },
+    goback(){
+      this.$router.go(-1);
     }
   },
   watch:{

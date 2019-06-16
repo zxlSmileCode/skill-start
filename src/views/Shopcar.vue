@@ -3,61 +3,76 @@
     <div class="page-header">
       <div class="head-bar no-empty">
         <div class="title-opts">
-          <h2 class="title">购物车(2)</h2>
+          <h2 class="title">购物车({{carInf.length}})</h2>
           <div class="opts">
             <span class="opt manage">管理</span>
           </div>
         </div>
-        <p class="info">共2件宝贝</p>
+        <p class="info">共{{carInf.length}}件宝贝</p>
       </div>
     </div>
     <div>
-      <div class="page-content" v-for="(i,index) in goods" :key="index">
+      <div class="page-content" v-for="(i,index) in carInf" :key="index">
       <div class="content-top" style="height:44px;width:100%">
         <div
-          class="checked fl"
-          style="float: left;border-radius: 50%;border: 1px solid #ccc;width: 21px;height: 21px;"
-        ></div>
-        <div class="fl" style="marginLeft:20px;">xxxxxxxxx</div>
-        <div class="fr">领卷</div>
+          :class="{
+          'checked':i.state,
+          'fl':true
+          }"
+          style="float: left;border-radius: 50%;border: 1px solid #ccc;width: 21px;height: 21px;margin-top: 10px;"
+        >
+          <input type="checkbox" v-model="i.state" style="opacity:0">
+        </div>
+        <div class="fl" style="marginLeft:20px;">cyx猪妖店</div>
       </div>
       <div class="content-main">
-        <div class="checked fl" style="float: left;border-radius: 50%;border: 1px solid #ccc;width: 21px;height: 21px;marginTop:63px;"
-        ></div>
-        <div class="imgs"></div>
+        <div :class="{
+          'checked':i.state,
+          'fl':true
+          }" style="float: left;border-radius: 50%;border: 1px solid #ccc;width: 21px;height: 21px;marginTop:63px;"
+        >
+          <input type="checkbox" v-model="i.state" @click="checkItem(i)" style="opacity:0">
+        </div>
+        <div class="imgs">
+          <img :src="i.src" alt="" style="width:100%;height:100%">
+        </div>
         <ul>
           <li
             style="line-height: 16.8px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;marginBottom:10px;"
           >{{i.name}}</li>
-          <li style="color: rgb(153, 153, 153)">{{i.size}}</li>
+          <li style="color: rgb(153, 153, 153)">这很值得买！！</li>
           <li style="margin:4px 0;">
-            <span>比加入时降￥9.00</span>
+            <span>比加入时降￥999.00</span>
           </li>
           <li class="fl" style="marginLeft:136px;">
-            <span>￥{{i.much}}</span>
+            <span style="fontSize:20px">￥{{i.id}}</span>
           </li>
           <li class="fr addopp">
-            <input type="button" style="width:24px" @click="i.buynum--" value="-" :disabled="i.buynum==1"/>
-            <input type="text" v-model="i.buynum" style="width:30px;textAlign:center">
-            <input type="button" style="width:24px" @click="i.buynum++" value="+" :disabled="i.buynum==i.num">
+            <input type="button" style="width:24px" value="-" @click="oppOrDel(i)"/>
+            <input type="text" style="width:30px;textAlign:center" v-model="i.num">
+            <input type="button" style="width:24px" value="+" @click="addOrMax(i)" :disabled="i.num==8"/>
           </li>
         </ul>
       </div>
       <div class="settlement-bar">
         <div class="checkbox-wrapper">
           <label class="select-all">
-            <span class="icon checked"></span>全选
+            <span :class="{'icon':true,
+             'checked':allBool}" style="border-radius: 50%;
+    border: 1px solid rgb(204, 204, 204); margin-top:10px;">
+              <input type="checkbox" @click="check" v-model="allBool" style="opacity:0">  
+            </span>全选
           </label>
         </div>
         <div class="submit-wrapper">
           <span class="price-wrapper">
             <div class="post-price">
               <span class="post">不含运费</span>合计:
-              <span class="price">￥0</span>
+              <span class="price">￥{{priceSum}}</span>
             </div>
             <!-- empty -->
           </span>
-          <span class="btn submit">结算(1)</span>
+          <span class="btn submit" @click="goList(goodsum)">结算({{goodsum}})</span>
         </div>
       </div>
     </div>
@@ -110,34 +125,110 @@ import TaoFoottool from "@/components/TaoFoottool.vue";
 export default {
   data(){
     return{
-      goods:[{
-        name:'白衬衫男长袖韩版修身商务正装职业工装短袖结婚伴郎西装白色衬衣',
-        size:'1-317（长袖）平纹款白色;40/XL',
-        pigimg:'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2865991597,944747464&fm=173&app=49&f=JPEG?w=640&h=360&s=B4A602BA56C750E2D2B7E2C70300F0B6',
-        much:39,
-        num:5,
-        buynum:1
-      },{
-        name:'cyxcyxxyxycxycyxzxlcyxcyxxyxycxycyxzxl',
-        size:'250-250(IQ) like a pig',
-        pigimg:'http://img4.imgtn.bdimg.com/it/u=3889104832,2229867208&fm=26&gp=0.jpg',
-        much:9999,
-        num:3,
-        buynum:1
+      carInf:[],
+      allBool:false,
+      goodsum:0,
+      priceSum:0,
+      buyOk:false
+    }
+  },
+  methods:{
+    createShop(){
+      this.carInf = [...this.carInf,...this.$store.state.shopcar];
+    },
+    check() {
+      this.allBool = !this.allBool;
+      for (let i in this.carInf) {
+        this.$set(this.carInf[i], 'state', this.allBool);
       }
-      ]
+    },
+    checkItem(i){
+      this.$set(i, 'state', !i.state);
+    },
+    oppOrDel(i){
+      i.num--;
+      if(i.num<1){
+        var del = confirm('你确定要删除这件商品?');
+        i.num = 1;
+      }
+      this.$store.commit('updataCar',i);
+      if(del){
+        this.$store.commit('removeFormCar',i.id);
+        location.reload();
+      }
+    },
+    addOrMax(i){
+      i.num++;
+      this.$store.commit('updataCar',i);
+    },
+    goList(num){
+      if(num){
+        for(var i = 0;i<this.carInf.length;i++){
+          if(this.carInf[i].state){
+            this.$store.commit('setList',this.carInf[i]);
+            console.log(i);
+          }
+        }
+        location.href = '/list';
+      }
       
     }
   },
   components: {
     TaoFoottool
+  },
+  created(){
+    this.createShop();
+  },
+  watch:{
+    carInf:{
+      deep:true,
+      handler(val){
+        this.goodsum = 0;
+        this.priceSum = 0;
+        for(i in val){
+          if(val[i].state){
+            this.goodsum++;
+            this.priceSum += val[i].id * val[i].num;
+          }
+        }
+        for(var i = 0;i<val.length;i++){
+          if(!val[i].state){
+            this.allBool = false;
+            break;
+          }
+          if(i == val.length-1){
+            this.allBool = true;
+          }
+        }
+      }
+    },
+    goodsum:{
+      deep:true,
+      handler(val){
+        if(val>0){
+          this.buyOk = true;
+        }else{
+          this.buyOk = false;
+        }
+      }
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../components/iconfont/iconfont.css";
-
+body, html {
+    height: 100%;
+    background-color: #f4f4f4;
+}
+html{
+  font-size: 37.5px;
+}
+body{
+  font-size: 16px;
+}
 .head-bar.no-empty {
   width: 375px;
   height: 180px;
@@ -227,7 +318,6 @@ export default {
 .imgs {
   width: 90px;
   height: 90px;
-  background: url('https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2865991597,944747464&fm=173&app=49&f=JPEG?w=640&h=360&s=B4A602BA56C750E2D2B7E2C70300F0B6') no-repeat;
   margin-left: 20px;
   margin-right: 10px;
   float: left;
